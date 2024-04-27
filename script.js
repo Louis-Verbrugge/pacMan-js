@@ -1,22 +1,41 @@
 
 let board, context;
-let HEIGHT = 500;
-let WIDTH = 500;
+
+
 
 window.onload = function () {
-
     board = document.getElementById("board")
-    
     board.height = HEIGHT;
     board.width = WIDTH;
     context = board.getContext("2d");
 
-    requestAnimationFrame(game);
+    setInterval(main, fpsInterval)
+
 }
 
-function game() {
+
+
+function main() {
     context.clearRect(0, 0, WIDTH, HEIGHT);
-    context.fillStyle = "black";
-    context.fillRect(0, 0, WIDTH, HEIGHT);
-    requestAnimationFrame(game);
+    drawPlateau();
+    pacMan.drawPacMan();
+
+    pacMan.move();
+}
+
+function drawPlateau() {
+    for (let y = 0; y < plateau.length;  y++) {
+        for (let x = 0; x < plateau[0].length; x++) {
+            switch (plateau[y][x]) {
+                case 0:
+                    context.fillStyle = "black"
+                    break;
+                case 1:
+                    context.fillStyle = "purple"
+                    break;
+            }
+            context.fillRect(tailleCaseX*x, tailleCaseY*y, tailleCaseX, tailleCaseY)
+
+        }
+    }
 }
