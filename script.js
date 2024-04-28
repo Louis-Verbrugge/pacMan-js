@@ -5,8 +5,6 @@ let board, context;
 
 window.onload = function () {
     board = document.getElementById("board")
-    board.height = HEIGHT;
-    board.width = WIDTH;
     context = board.getContext("2d");
 
     setInterval(main, fpsInterval)
@@ -17,25 +15,28 @@ window.onload = function () {
 
 function main() {
     context.clearRect(0, 0, WIDTH, HEIGHT);
-    drawPlateau();
-    pacMan.drawPacMan();
-
+    
     pacMan.move();
+    collisionPatGomme();
+
+    drawPlateau();
+    drawPatGomme();
+    pacMan.drawPacMan();
+    
 }
 
 function drawPlateau() {
-    for (let y = 0; y < plateau.length;  y++) {
-        for (let x = 0; x < plateau[0].length; x++) {
+    for (let y = 1; y < plateau.length-1;  y++) {
+        for (let x = 1; x < plateau[0].length-1; x++) {
             switch (plateau[y][x]) {
                 case 0:
-                    context.fillStyle = "black"
+                    context.fillStyle = "black";
                     break;
                 case 1:
-                    context.fillStyle = "purple"
+                    context.fillStyle = "purple";
                     break;
             }
-            context.fillRect(tailleCaseX*x, tailleCaseY*y, tailleCaseX, tailleCaseY)
-
+            context.fillRect(tailleCaseX*(x-1), tailleCaseY*(y-1), tailleCaseX, tailleCaseY);
         }
     }
 }

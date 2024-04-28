@@ -12,12 +12,12 @@
 <body>
 
     <div class="pageJeu" id="pageJeu">
-        <canvas id="board"></canvas>
+        <canvas width="800" height="800" id="board"></canvas>
         <button onclick="goToSetting()">Clique sur moi !</button>
     </div>
 
 
-    <div class="pageParametre" id="pageParametre" >
+    <div class="pageParametre" id="pageParametre" style="display: none;" >
         <div class="leaveSetting">
             <img onclick="goToGame()" src="page/setting/image/fleche.svg" alt="">
         </div>
@@ -32,8 +32,8 @@
 
     
     <script src="src/pacMan.js"></script>
+    <script src="src/patGomme.js"></script>
     <script src="src/variable.js"></script>
-
 
     <script src="src/changeWindows.js"></script>
     <script src="page/setting/setting.js"></script>

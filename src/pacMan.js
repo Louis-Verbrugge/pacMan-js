@@ -12,36 +12,79 @@ class PacMan {
         this.vitesseX = 0; // px
         this.vitesseY = vitesseMax;
         this.direction = "bottom"
-        this.newDirection = "left"
+        this.newDirection = "bottom"
+    }
+
+    
+    pacManDansUneCase() { // fonctionne pas...
+        return true;
+        //return true;
+        /*Cette fonction a pour but de return true ou false si PacMan et entierement dans une case ou non.
+        donc si la possition d'avant du pac man n'est pas dans la meme case que la nouvelle ca signifie que 
+        le pacMan est bien placé*/
+        
+        //console.log("possition Y: "+this.possitionYpixel+"  | possition X: "+ this.possitionXpixel);
+        //alert(Math.floor(this.possitionYpixel / tailleCaseY) +"  &  "+Math.floor(this.possitionXpixel / tailleCaseX))
+        
+        let possitionPacManX = Math.floor(this.possitionXpixel / tailleCaseX);
+        let possitionPacManY = Math.floor(this.possitionYpixel / tailleCaseY);
+        let anciennePossitionPacManX = Math.floor((this.possitionXpixel - this.vitesseX) / tailleCaseX);
+        let anciennePossitionPacManY = Math.floor((this.possitionYpixel - this.vitesseY) / tailleCaseY);
+
+        console.log(possitionPacManX, anciennePossitionPacManX, possitionPacManY, anciennePossitionPacManY)
+        console.log(this.possitionXpixel, this.possitionYpixel, this.possitionXpixel - this.vitesseX, this.possitionYpixel - this.vitesseY)
+        console.log("s,njidhijqsuhjdbsq")
+        if (possitionPacManX != anciennePossitionPacManX || possitionPacManY != anciennePossitionPacManY) {
+
+            this.possitionXpixel = possitionPacManX * tailleCaseX;
+            this.possitionYpixel = possitionPacManY * tailleCaseY;
+
+            return true
+        } else {
+            alert("STOPP") 
+            return false     
+            
+        }
     }
 
     changeDirection() {
-        if (!this.checkCollision(this.newDirection)) {
-            this.direction = this.newDirection;
+        if (this.direction != this.newDirection) {
+            console.log("ok etape 1")
+            if (!this.checkCollision(this.newDirection)) {
+                console.log("ok etape 2")
+                if (!this.pacManDansUneCase()) {
+                    console.log("okok TOpp!!! ")
+                    return; // le pacMan n'est pas encore au bon endroit pour changer de direction
+                }
 
-            switch (this.direction) {
-                case "right":
-                    this.vitesseX = this.vitesseMax;
-                    this.vitesseY = 0;
-                    break;
+                //alert("sd")
+                this.direction = this.newDirection;
 
-                case "left":
-                    this.vitesseX = -this.vitesseMax;
-                    this.vitesseY = 0;
-                    break;
+                switch (this.direction) {
+                    case "right":
+                        this.vitesseX = this.vitesseMax;
+                        this.vitesseY = 0;
+                        break;
 
-                case "height":
-                    this.vitesseX = 0;
-                    this.vitesseY = -this.vitesseMax;
-                    break;
+                    case "left":
+                        this.vitesseX = -this.vitesseMax;
+                        this.vitesseY = 0;
+                        break;
 
-                case "bottom":
-                    this.vitesseX = 0;
-                    this.vitesseY = this.vitesseMax;
-                    break;
+                    case "height":
+                        this.vitesseX = 0;
+                        this.vitesseY = -this.vitesseMax;
+                        break;
+
+                    case "bottom":
+                        this.vitesseX = 0;
+                        this.vitesseY = this.vitesseMax;
+                        break;
+                }
+                return true
             }
-            return true
         }
+
         return false
     }
 
@@ -88,7 +131,7 @@ class PacMan {
     }
 
     move() {
-        console.log(this.changeDirection());
+        this.changeDirection();
         if (!this.checkCollision(this.direction)) {
             this.possitionXpixel += this.vitesseX
             this.possitionYpixel += this.vitesseY
@@ -100,7 +143,26 @@ class PacMan {
 
     drawPacMan() {
         context.fillStyle = "yellow"
-        context.fillRect(this.possitionXpixel, this.possitionYpixel, tailleCaseX, tailleCaseY)
+        context.fillRect(this.possitionXpixel-tailleCaseX, this.possitionYpixel-tailleCaseY, tailleCaseX, tailleCaseY)
     }
     
+    setDirection(newDirectionPacMan) {
+        this.newDirection = newDirectionPacMan
+    }
+
+    setVitesseX(newVitesseX) {
+        this.vitesseX = newVitesseX;
+    }
+
+    setVitesseY(newVitesseY) {
+        this.vitesseY = newVitesseY;
+    }
+
+    getPossitionXpixel() {
+        return this.possitionXpixel;
+    }
+
+    getPossitionYpixel() {
+        return this.possitionYpixel;
+    }
 }
