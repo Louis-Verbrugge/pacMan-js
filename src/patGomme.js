@@ -1,6 +1,6 @@
 
 
-function creationListe() {
+function creationListePatGomme() {
     let listePatGomme = [];
     for (let y = 0; y<plateau.length; y++) {
         for (let x = 0; x<plateau[0].length; x++) {

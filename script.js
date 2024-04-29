@@ -22,6 +22,8 @@ function main() {
     drawPlateau();
     drawPatGomme();
     pacMan.drawPacMan();
+
+    //console.log("possition Pac-Man Y : "+pacMan.getPossitionYpixel())
     
 }
 
