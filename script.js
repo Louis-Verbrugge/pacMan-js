@@ -2,28 +2,25 @@
 let board, context;
 
 
-
 window.onload = function () {
     board = document.getElementById("board")
     context = board.getContext("2d");
 
-    setInterval(main, fpsInterval)
-
+    board.height = HEIGHT;
+    board.width = WIDTH;
+    setInterval(main, fpsInterval);
 }
-
-
 
 function main() {
     context.clearRect(0, 0, WIDTH, HEIGHT);
     
     pacMan.move();
     collisionPatGomme();
+    pacManOnTeleporteur();
 
     drawPlateau();
     drawPatGomme();
     pacMan.drawPacMan();
-
-    //console.log("possition Pac-Man Y : "+pacMan.getPossitionYpixel())
     
 }
 
