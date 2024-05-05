@@ -50,7 +50,7 @@ function newPossition(endroitTeleportation, numeroTeleporteur) {
 }
 
 function pacManOnTeleporteur() {
-    if (pacMan.pacManDansUneCase()) {
+    if (classMouvement.pacManDansUneCase(pacMan.getPossitionXpixel(), pacMan.getPossitionYpixel(), pacMan.getVitesseX(), pacMan.getVitesseY(), pacMan.getDirection())) {
         pacMan.calculBonEmplacement();
         
         // je test si le pac man est dans une case de teleporteur:

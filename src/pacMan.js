@@ -10,12 +10,12 @@ class PacMan {
 
         this.vitesseMax = vitesseMax;
         this.vitesseX = 0; // px
-        this.vitesseY = -vitesseMax;
-        this.direction = "height"
-        this.newDirection = "height"
+        this.vitesseY = vitesseMax;
+        this.direction = "bottom"
+        this.newDirection = "bottom"
     }
 
-    
+    /*
     pacManDansUneCase() {
         /*Cette fonction a pour but de return true ou false si PacMan et entierement dans une case ou non.
         donc si la possition d'avant du pac man n'est pas dans la meme case que la nouvelle ca signifie que 
@@ -24,6 +24,7 @@ class PacMan {
         //console.log("possition Y: "+this.possitionYpixel+"  | possition X: "+ this.possitionXpixel);
         //alert(Math.floor(this.possitionYpixel / tailleCaseY) +"  &  "+Math.floor(this.possitionXpixel / tailleCaseX))
         
+        /*
         let possitionPacManX = Math.floor(this.possitionXpixel / tailleCaseX);
         let possitionPacManY = Math.floor(this.possitionYpixel / tailleCaseY);
         let anciennePossitionPacManX;
@@ -59,56 +60,43 @@ class PacMan {
                 break;
         }
 
-        //console.log("INFO :: " + this.vitesseX + " & "+this.vitesseY);
-
-        
-        //console.log(possitionPacManX, anciennePossitionPacManX, possitionPacManY, anciennePossitionPacManY)
-        //console.log(this.possitionXpixel, this.possitionYpixel, this.possitionXpixel - this.vitesseX, this.possitionYpixel - this.vitesseY)
-        //console.log("s,njidhijqsuhjdbsq")
-
         if (possitionPacManX != anciennePossitionPacManX || possitionPacManY != anciennePossitionPacManY) {
         
             this.possitionXpixel = possitionPacManX * tailleCaseX;
             this.possitionYpixel = possitionPacManY * tailleCaseY;
-            //console.log("TRUEEEEEEEEEEEEEEEEEEEEEEEEEE")
             return true
         } else { 
-            //console.log("FALSEEEEEEEEEEEEEEEEEEEEEEEEE")
-
             return false   
         }
     }
+    */
 
-    
+    /*
     collisionHorsPlateau() {
         if (this.possitionXpixel < 0) {
-            return false
-
+            return false;
         } else if ((WIDTH+tailleCaseX) < this.possitionXpixel) {
-            return false
-
+            return false;
         } else if (this.possitionYpixel < 0) {
-            return false
+            return false;
         } else if ((HEIGHT+tailleCaseY) < this.possitionYpixel) {
-            return false
-            //alert("sfdsdd")
-            //alert(Math.floor((this.possitionYpixel + tailleCaseY) / tailleCaseY) + " && "+Math.floor(this.possitionXpixel / tailleCaseX))
-            //this.possitionYpixel = 799+46;
-            //alert(Math.floor((this.possitionYpixel + tailleCaseY) / tailleCaseY) + " && "+Math.floor(this.possitionXpixel / tailleCaseX))
+            return false;
         }
         return true;
     }
+    */
     
 
     changeDirection() {
         if (this.direction != this.newDirection) {
-            if (!this.checkCollision(this.newDirection)) {
-                if (!this.pacManDansUneCase()) {
+            if (!classMouvement.checkCollision(this.newDirection, this.possitionXpixel, this.possitionYpixel, this.vitesseMax)) {
+                if (!classMouvement.pacManDansUneCase(this.possitionXpixel, this.possitionYpixel, this.vitesseX, this.vitesseY, this.direction)) {
                      return; // le pacMan n'est pas encore au bon endroit pour changer de direction
                 }
+
+                this.calculBonEmplacement();
                 this.direction = this.newDirection;
 
-                //console.log("changelent valeur !")
                 switch (this.direction) {
                     case "right":
                         this.vitesseX = this.vitesseMax;
@@ -137,12 +125,12 @@ class PacMan {
     }
 
 
-
+    /*
     checkCollision(directionPacMan) {
         // false = collision
         // true = pas de collision
 
-        if (this.collisionHorsPlateau()) {
+        if (classMouvement.collisionHorsPlateau(this.possitionXpixel, this.possitionYpixel)) {
             switch (directionPacMan) {
                 case "right":
                     if ( plateau[Math.floor((this.possitionYpixel) / tailleCaseY)][Math.floor((this.possitionXpixel + tailleCaseX) / tailleCaseX)] == 0 &&
@@ -177,21 +165,22 @@ class PacMan {
         }
         return true;
     }
+    */
+
     
     calculBonEmplacement() {
         //a ce moment je sais que le millieu du pac-man et dans la bonne case donc je cherche ses coord pour déterminer la possition du pac-man
-
         this.possitionXliste = Math.floor((this.possitionXpixel+tailleCaseX/2) / tailleCaseX);
         this.possitionYliste = Math.floor((this.possitionYpixel+tailleCaseY/2) / tailleCaseY);
-
         this.possitionXpixel = this.possitionXliste * tailleCaseX;
         this.possitionYpixel = this.possitionYliste * tailleCaseY;
 
     }
+    
 
     move() {
         this.changeDirection();
-        if (!this.checkCollision(this.direction)) {
+        if (!classMouvement.checkCollision(this.direction, this.possitionXpixel, this.possitionYpixel, this.vitesseMax)) {
             this.possitionXpixel += this.vitesseX
             this.possitionYpixel += this.vitesseY
             
@@ -217,8 +206,6 @@ class PacMan {
         this.vitesseY = newVitesseY;
     }
 
-    
-
     setPossitionXpixel(newPossitionXpixel) {
         this.possitionXpixel = newPossitionXpixel;
     }
@@ -235,6 +222,18 @@ class PacMan {
 
     getPossitionYpixel() {
         return this.possitionYpixel;
+    }
+
+    getVitesseX() {
+        return this.vitesseX;
+    }
+
+    getVitesseY() {
+        return this.vitesseY;
+    }
+
+    getDirection() {
+        return this.direction;
     }
 
     getPossitionXliste() {

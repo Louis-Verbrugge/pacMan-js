@@ -13,14 +13,19 @@ window.onload = function () {
 
 function main() {
     context.clearRect(0, 0, WIDTH, HEIGHT);
-    
+
+    ghostRed.move();
+
     pacMan.move();
     collisionPatGomme();
     pacManOnTeleporteur();
 
     drawPlateau();
     drawPatGomme();
+
     pacMan.drawPacMan();
+    ghostRed.drawGhost();
+
     
 }
 
