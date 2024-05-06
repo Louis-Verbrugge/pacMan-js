@@ -9,10 +9,10 @@ class PacMan {
         this.possitionYpixel = possitionYliste*tailleCaseY;
 
         this.vitesseMax = vitesseMax;
-        this.vitesseX = 0; // px
-        this.vitesseY = vitesseMax;
-        this.direction = "bottom"
-        this.newDirection = "bottom"
+        this.vitesseX = vitesseMax; // px
+        this.vitesseY = 0;
+        this.direction = "right"
+        this.newDirection = "right"
     }
 
     /*
@@ -89,7 +89,7 @@ class PacMan {
 
     changeDirection() {
         if (this.direction != this.newDirection) {
-            if (!classMouvement.checkCollision(this.newDirection, this.possitionXpixel, this.possitionYpixel, this.vitesseMax)) {
+            if (!classMouvement.checkCollision(this.newDirection, this.possitionXpixel, this.possitionYpixel, this.vitesseX, this.vitesseY)) {
                 if (!classMouvement.pacManDansUneCase(this.possitionXpixel, this.possitionYpixel, this.vitesseX, this.vitesseY, this.direction)) {
                      return; // le pacMan n'est pas encore au bon endroit pour changer de direction
                 }
@@ -180,9 +180,11 @@ class PacMan {
 
     move() {
         this.changeDirection();
-        if (!classMouvement.checkCollision(this.direction, this.possitionXpixel, this.possitionYpixel, this.vitesseMax)) {
-            this.possitionXpixel += this.vitesseX
-            this.possitionYpixel += this.vitesseY
+        if (!classMouvement.checkCollision(this.direction, this.possitionXpixel, this.possitionYpixel, this.vitesseX, this.vitesseY)) {
+            console.log("j'avance le pac-man");
+
+            this.possitionXpixel += this.vitesseX;
+            this.possitionYpixel += this.vitesseY;
             
         } else {
             this.calculBonEmplacement();

@@ -12,22 +12,31 @@ window.onload = function () {
 }
 
 function main() {
+
     context.clearRect(0, 0, WIDTH, HEIGHT);
 
-    ghostRed.move();
 
+    for (let i = 0; i < listeGhost.length; i++) {
+        listeGhost[i].move()
+    }
     pacMan.move();
+
     collisionPatGomme();
-    pacManOnTeleporteur();
+    pacManOnTeleporteur(pacMan);
+    for (let i = 0; i < listeGhost.length; i++) {
+        pacManOnTeleporteur(listeGhost[i]);
+    }
 
     drawPlateau();
     drawPatGomme();
-
+    for (let i = 0; i < listeGhost.length; i++) {
+        listeGhost[i].drawGhost();
+    }
     pacMan.drawPacMan();
-    ghostRed.drawGhost();
 
-    
 }
+
+
 
 function drawPlateau() {
     for (let y = 1; y < plateau.length-1;  y++) {

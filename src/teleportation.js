@@ -38,27 +38,28 @@ function creationListeTeleporteur() {
     return listeTeleporteur;
 }
 
-function newPossition(endroitTeleportation, numeroTeleporteur) {
+function newPossition(entite, endroitTeleportation, numeroTeleporteur) {
 
     if (numeroTeleporteur == 0) {
-        pacMan.setPossitionXpixel(endroitTeleportation[1][0] * tailleCaseX);
-        pacMan.setPossitionYpixel(endroitTeleportation[1][1] * tailleCaseY);
+        entite.setPossitionXpixel(endroitTeleportation[1][0] * tailleCaseX);
+        entite.setPossitionYpixel(endroitTeleportation[1][1] * tailleCaseY);
     } else {
-        pacMan.setPossitionXpixel(endroitTeleportation[0][0] * tailleCaseX);
-        pacMan.setPossitionYpixel(endroitTeleportation[0][1] * tailleCaseY);   
+        entite.setPossitionXpixel(endroitTeleportation[0][0] * tailleCaseX);
+        entite.setPossitionYpixel(endroitTeleportation[0][1] * tailleCaseY);   
     }
 }
 
-function pacManOnTeleporteur() {
-    if (classMouvement.pacManDansUneCase(pacMan.getPossitionXpixel(), pacMan.getPossitionYpixel(), pacMan.getVitesseX(), pacMan.getVitesseY(), pacMan.getDirection())) {
-        pacMan.calculBonEmplacement();
+function pacManOnTeleporteur(entite) {
+    if (classMouvement.pacManDansUneCase(entite.getPossitionXpixel(), entite.getPossitionYpixel(), entite.getVitesseX(), entite.getVitesseY(), entite.getDirection())) {
+        entite.calculBonEmplacement();
         
         // je test si le pac man est dans une case de teleporteur:
         for (let i = 0; i < listeTeleporteur.length; i++) {
             for (let j = 0; j < listeTeleporteur[i].length; j++) {
-                if(pacMan.getPossitionXliste() == listeTeleporteur[i][j][0] && pacMan.getPossitionYliste() == listeTeleporteur[i][j][1]) {
+                if(entite.getPossitionXliste() == listeTeleporteur[i][j][0] && entite.getPossitionYliste() == listeTeleporteur[i][j][1]) {
 
-                    newPossition(listeTeleporteur[i], j);
+                    newPossition(entite, listeTeleporteur[i], j);
+                    //alert("il y a une teleportation : " + entite.getPossitionYpixel());
               
 
                 }

@@ -2,11 +2,16 @@
 class MouvementEntite {
 
     
-    checkCollision(directionPacMan, possitionXpixel, possitionYpixel, vitesseMax) {
-        // false = collision
-        // true = pas de collision
+    checkCollision(directionPacMan, possitionXpixel, possitionYpixel, vitesseX, vitesseY) {
 
-        if (classMouvement.collisionHorsPlateau(possitionXpixel, possitionYpixel)) {
+        //alert("sdsd")
+        // false = pas de collision
+        // true = collision
+        if (directionPacMan=="bottom") {
+            console.log("dsdsdsqqdsdsqdsqdsq")
+        }
+
+        if (this.collisionHorsPlateau(possitionXpixel, possitionYpixel, vitesseX, vitesseY)) {
             switch (directionPacMan) {
                 case "right":
                     if ( plateau[Math.floor((possitionYpixel) / tailleCaseY)][Math.floor((possitionXpixel + tailleCaseX) / tailleCaseX)] == 0 &&
@@ -29,20 +34,45 @@ class MouvementEntite {
                     }
                     break;
 
+
                 case "bottom":
+                    console.log(possitionYpixel + " & " + tailleCaseY + " - " + HEIGHT);
+                    console.log(Math.floor((possitionYpixel + tailleCaseY) / tailleCaseY) + "  |  "+Math.floor(possitionXpixel / tailleCaseX));
+                    //alert("STOPP")
                     if (plateau[Math.floor((possitionYpixel + tailleCaseY) / tailleCaseY)][Math.floor(possitionXpixel / tailleCaseX)] == 0 &&
                     plateau[Math.floor((possitionYpixel + tailleCaseY) / tailleCaseY)][Math.floor((possitionXpixel + tailleCaseX-1-vitesseMax) / tailleCaseX)] == 0) {
                         return false;
                     }
                     break;
             }
-        } else {
+        }// else {
+        //    return true;
+        //}
+        return true;
+    }
+
+    horsMapVisible(possitionXpixel, possitionYpixel) {
+        /*  a la difference de la function "collisionHorsPlateau",
+        je tes si l'entite et dans la plateau visible, donc si il est 
+        sur la teleporteur il est pas visible  */
+
+        // true = dans la map
+        // false = hors de la map
+        if (possitionXpixel <= 0) {
+            return false;
+        } else if (WIDTH < possitionXpixel) {
+            return false;
+        } else if (possitionYpixel <= 0) {
+            return false;
+        } else if (HEIGHT < possitionYpixel) {
             return false;
         }
         return true;
     }
 
     collisionHorsPlateau(possitionXpixel, possitionYpixel) {
+        // true = pas de collision
+        // false = collision
         if (possitionXpixel < 0) {
             return false;
         } else if ((WIDTH+tailleCaseX) < possitionXpixel) {
@@ -61,12 +91,14 @@ class MouvementEntite {
         donc si la possition d'avant du pac man n'est pas dans la meme case que la nouvelle ca signifie que 
         le pacMan est bien placé*/
         
+        // vitesseX = vitesseX/2;
+        // vitesseY = vitesseY/2;
+        
         let possitionPacManX = Math.floor(possitionXpixel / tailleCaseX);
         let possitionPacManY = Math.floor(possitionYpixel / tailleCaseY);
         let anciennePossitionPacManX;
         let anciennePossitionPacManY;
 
-        //console.log("INFO :: " + this.vitesseX + " & "+this.vitesseY + " | taille case Y " + tailleCaseY + " | vitesse Y " +this.vitesseY);
         switch (direction) {
             case "right":
                 //alert("right")
@@ -96,9 +128,6 @@ class MouvementEntite {
         }
 
         if (possitionPacManX != anciennePossitionPacManX || possitionPacManY != anciennePossitionPacManY) {
-        
-            //this.possitionXpixel = possitionPacManX * tailleCaseX;
-            //this.possitionYpixel = possitionPacManY * tailleCaseY;
             return true
         } else { 
             return false   
