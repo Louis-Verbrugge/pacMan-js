@@ -1,3 +1,14 @@
-body{
+body {
     background-color: rgb(42, 42, 42);
+    padding: 0;
+    margin: 0;
+
+}
+
+
+#imagePacMan {
+    position: fixed;
+    left: "0px";
+    top: "0px";
+
 }

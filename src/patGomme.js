@@ -38,5 +38,4 @@ function collisionPatGomme() {
             listePatGomme.splice(i, 1);
         }
     }
-
 }
