@@ -23,9 +23,9 @@ function creationListePatGomme() {
 
 function drawPatGomme() {
     for (let i = 0; i < listePatGomme.length; i++) {
-        //context.drawImage(imageGround, listePatGomme[i].posX-tailleCaseX, listePatGomme[i].posY-tailleCaseY, tailleCaseX, tailleCaseY);
-        context.fillStyle = listePatGomme[i].color;
-        context.fillRect(listePatGomme[i].posX - tailleCaseX, listePatGomme[i].posY - tailleCaseY, tailleCaseX, tailleCaseY);
+        context.drawImage(imagePatGomme, listePatGomme[i].posX - tailleCaseX, listePatGomme[i].posY - tailleCaseY, tailleCaseX, tailleCaseY);
+        //context.fillStyle = listePatGomme[i].color;
+        //context.fillRect(listePatGomme[i].posX - tailleCaseX, listePatGomme[i].posY - tailleCaseY, tailleCaseX, tailleCaseY);
     }
 }
 

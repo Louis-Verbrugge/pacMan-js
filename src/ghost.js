@@ -1,14 +1,14 @@
 
 
 class Ghost {
-    constructor(possitionXliste, possitionYliste, color, vitesseMax) {
+    constructor(possitionXliste, possitionYliste, vitesseMax, imageGhost) {
 
         this.possitionXliste = possitionXliste;
         this.possitionYliste = possitionYliste;
         this.possitionXpixel = possitionXliste * tailleCaseX;
         this.possitionYpixel = possitionYliste * tailleCaseY;
 
-        this.color = color;
+        this.imageGhost = imageGhost;
         this.vitesseMax = vitesseMax;
 
         this.vitesseX = 0; // px
@@ -112,7 +112,6 @@ class Ghost {
         }
 
         if (!classMouvement.checkCollision(this.direction, this.possitionXpixel, this.possitionYpixel, this.vitesseX, this.vitesseY)) {
-            //console.log("j'avance le ghost")
             this.possitionXpixel += this.vitesseX;
             this.possitionYpixel += this.vitesseY;
 
@@ -120,21 +119,16 @@ class Ghost {
             this.calculBonEmplacement();
         }
 
-
-
-
-
-
     }
 
     drawGhost() {
 
         context.drawImage(
-            imagePacMan,
-            (imagePacMan.width / 4) * this.imageSpriteX,
-            (imagePacMan.height / 4) * this.imageSpriteY,
-            imagePacMan.width / 4,
-            imagePacMan.height / 4,
+            this.imageGhost,
+            (this.imageGhost.width / 4) * this.imageSpriteX,
+            (this.imageGhost.height / 4) * this.imageSpriteY,
+            this.imageGhost.width / 4,
+            this.imageGhost.height / 4,
             this.possitionXpixel - tailleCaseX,
             this.possitionYpixel - tailleCaseY,
             tailleCaseX,

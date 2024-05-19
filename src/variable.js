@@ -15,23 +15,23 @@
 let plateau = [
 
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 11, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1],
-    [1, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1, 13, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1],
-    [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-    [10, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1],
-    [1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1],
-    [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1],
-    [1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 10],
-    [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 1, 1, 1],
-    [1, 0, 1, 0, 1, 0, 0, 0, 7, 0, 0, 1, 0, 1, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 13, 1, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1],
-    [1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1],
-    [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1],
-    [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+    [1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1],
+    [1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1],
+    [1, 2, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1],
+    [1, 2, 1, 2, 1, 13, 1, 2, 1, 1, 2, 2, 1, 2, 2, 1, 2, 1],
+    [1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1],
+    [1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1],
+    [12, 2, 2, 2, 2, 2, 1, 1, 2, 1, 1, 2, 2, 2, 2, 1, 2, 1],
+    [1, 1, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 1],
+    [1, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1, 2, 2, 2, 2, 1, 1, 1],
+    [1, 2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 12],
+    [1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 7, 1, 1, 1],
+    [1, 2, 1, 2, 1, 2, 2, 2, 7, 2, 2, 1, 2, 1, 2, 1, 2, 1],
+    [1, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 1, 13, 1, 2, 1, 2, 1],
+    [1, 2, 1, 2, 1, 2, 2, 2, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1],
+    [1, 2, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 1, 2, 1],
+    [1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1],
+    [1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1],
     [1, 1, 1, 1, 1, 1, 11, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
@@ -55,11 +55,27 @@ let vitesseMax = tailleCaseX / 9;
 let classMouvement = new MouvementEntite();
 
 
+//INIT IMAGE:
+let imagePatGomme = new Image();
+imagePatGomme.src = "image/imagePatGomme.png";
+
+let imagePacMan = new Image();
+imagePacMan.src = "image/spritePacMan.png";
+
+let imageGhostRed = new Image();
+imageGhostRed.src = "image/spriteGhostRed.png";
+let imageGhostPink = new Image();
+imageGhostPink.src = "image/spriteGhostPink.png";
+let imageGhostBlue = new Image();
+imageGhostBlue.src = "image/spriteGhostBlue.png";
+let listeImageGhost = [imageGhostRed, imageGhostPink, imageGhostBlue];
+
+
 
 let pacMan = new PacMan(13, 6, vitesseMax);
 let listeGhost = [];
 for (let i = 0; i < 10; i++) {
-    listeGhost.push(new Ghost(8, 8, "red", vitesseMax));
+    listeGhost.push(new Ghost(8, 8, vitesseMax, listeImageGhost[i % listeImageGhost.length]));
 }
 
 let listeBonus = creationListeBonus();
@@ -68,8 +84,8 @@ let chronometreBonus;
 let listePatGomme = creationListePatGomme();
 let listeTeleporteur = creationListeTeleporteur();
 
-let imagePacMan = new Image();
-imagePacMan.src = "image/spritePacMan.png";
+
+
 
 //let imagePacMan = document.getElementById("imagePacMan");
 //imagePacMan.style.width = tailleCaseX + "px";
